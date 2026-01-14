@@ -78,18 +78,20 @@
                             {{ __('user.rsskey') }}
                         </label>
                     </p>
-                    <p class="form__group">
-                        <input
-                            id="irckey"
-                            class="form__text"
-                            type="text"
-                            wire:model.live="irckey"
-                            placeholder=" "
-                        />
-                        <label class="form__label form__label--floating" for="irckey">
-                            {{ __('user.irckey') }}
-                        </label>
-                    </p>
+                    @if (config('other.irckeys.is-enabled'))
+                        <p class="form__group">
+                            <input
+                                id="irckey"
+                                class="form__text"
+                                type="text"
+                                wire:model.live="irckey"
+                                placeholder=" "
+                            />
+                            <label class="form__label form__label--floating" for="irckey">
+                                {{ __('user.irckey') }}
+                            </label>
+                        </p>
+                    @endif
                     <p class="form__group">
                         <input
                             id="passkey"

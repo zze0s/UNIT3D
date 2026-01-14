@@ -13,6 +13,13 @@ class IrckeyAuthController extends Controller
 {
     public function __invoke(VerifyIrckeyRequest $request): JsonResponse
     {
+        if (!config('other.irckeys.is-enabled')) {
+            return response()->json([
+                'valid'  => false,
+                'reason' => 'feature_disabled',
+            ], 503);
+        }
+
         $submittedKey = (string) $request->input('irckey');
         $username = (string) $request->input('username');
 

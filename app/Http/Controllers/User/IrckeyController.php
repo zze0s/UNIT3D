@@ -29,6 +29,7 @@ class IrckeyController extends Controller
      */
     protected function update(Request $request, User $user): \Illuminate\Http\RedirectResponse
     {
+        abort_unless(config('other.irckeys.is-enabled'), 404);
         abort_unless($request->user()->is($user) || $request->user()->group->is_modo, 403);
 
         $changedByStaff = $request->user()->isNot($user);
@@ -58,6 +59,7 @@ class IrckeyController extends Controller
      */
     public function index(Request $request, User $user): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
+        abort_unless(config('other.irckeys.is-enabled'), 404);
         abort_unless($request->user()->is($user) || $request->user()->group->is_modo, 403);
 
         return view('user.irckey.index', [

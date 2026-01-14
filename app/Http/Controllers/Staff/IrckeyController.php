@@ -25,6 +25,8 @@ class IrckeyController extends Controller
      */
     public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
+        abort_unless(config('other.irckeys.is-enabled'), 404);
+
         return view('Staff.irckey.index');
     }
 }

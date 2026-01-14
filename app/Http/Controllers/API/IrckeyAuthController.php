@@ -13,6 +13,13 @@ class IrckeyAuthController extends Controller
 {
     public function __invoke(VerifyIrckeyRequest $request): JsonResponse
     {
+        if (!config('other.irckeys.is-enabled')) {
+            return response()->json([
+                'valid'  => false,
+                'reason' => 'feature_disabled',
+            ], 503);
+        }
+
         $submittedKey = (string) $request->input('irckey');
         $username = (string) $request->input('username');
 
@@ -28,27 +35,11 @@ class IrckeyAuthController extends Controller
             ], 404);
         }
 
-        if ($request->filled('username') && strcasecmp($user->username, (string) $request->string('username')) !== 0) {
+        if ($user->irckey === null || !hash_equals($user->irckey, $submittedKey)) {
             return response()->json([
                 'valid'  => false,
-                'reason' => 'username_mismatch',
-            ], 409);
-        }
-
-        // FIXME this doesn't work
-        $activeIrckey = $user->irckeys()
-//            ->whereNull('deleted_at')
-            ->latest('id')
-            ->first();
-
-        $currentKey = $user->irckey ?? '';
-        if ($currentKey === '' || !hash_equals($currentKey, $submittedKey)) {
-            if ($activeIrckey === null || !hash_equals($activeIrckey->content, $submittedKey)) {
-                return response()->json([
-                    'valid'  => false,
-                    'reason' => 'invalid_key',
-                ], 401);
-            }
+                'reason' => 'invalid_key',
+            ], 401);
         }
 
         return response()->json([
@@ -61,8 +52,8 @@ class IrckeyAuthController extends Controller
                     'slug' => $user->group->slug,
                     'name' => $user->group->name,
                 ],
-                'disabled_at'  => $user->disabled_at?->toIso8601String(),
-                'deleted_at'   => $user->deleted_at?->toIso8601String(),
+                'disabled_at' => $user->disabled_at?->toIso8601String(),
+                'deleted_at'  => $user->deleted_at?->toIso8601String(),
             ],
         ]);
     }

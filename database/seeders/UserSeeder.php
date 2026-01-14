@@ -36,8 +36,8 @@ class UserSeeder extends Seeder
                 'password'          => Hash::make(config('unit3d.default-owner-password')),
                 'passkey'           => md5(random_bytes(60)),
                 'rsskey'            => md5(random_bytes(60)),
-                'api_token'         => Str::random(100),
                 'irckey'            => md5(random_bytes(60)),
+                'api_token'         => Str::random(100),
             ],
             [
                 'id'                => 2,
@@ -48,8 +48,8 @@ class UserSeeder extends Seeder
                 'password'          => Hash::make(config('unit3d.default-owner-password')),
                 'passkey'           => md5(random_bytes(60)),
                 'rsskey'            => md5(random_bytes(60)),
-                'api_token'         => Str::random(100),
                 'irckey'            => md5(random_bytes(60)),
+                'api_token'         => Str::random(100),
             ],
             [
                 'id'                => 3,
@@ -60,8 +60,8 @@ class UserSeeder extends Seeder
                 'password'          => Hash::make(config('unit3d.default-owner-password')),
                 'passkey'           => md5(random_bytes(60)),
                 'rsskey'            => md5(random_bytes(60)),
-                'api_token'         => Str::random(100),
                 'irckey'            => md5(random_bytes(60)),
+                'api_token'         => Str::random(100),
             ],
         ], ['username'], ['updated_at' => DB::raw('updated_at')]);
     }

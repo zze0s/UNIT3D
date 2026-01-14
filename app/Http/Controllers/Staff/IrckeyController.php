@@ -21,10 +21,12 @@ use App\Http\Controllers\Controller;
 class IrckeyController extends Controller
 {
     /**
-     * Display all user apikeys.
+     * Display all user irckeys.
      */
     public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
+        abort_unless(config('other.irckeys.is-enabled'), 404);
+
         return view('Staff.irckey.index');
     }
 }

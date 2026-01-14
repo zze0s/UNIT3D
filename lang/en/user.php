@@ -325,7 +325,7 @@ return [
     'request-privacy-requested'       => 'Allow users to view a list of requests that you have made',
     'reset-api-token'                 => 'Reset API token',
     'reset-api-help'                  => 'You will have to update any scripts or applications you are using with your new token, after resetting the API token',
-    'reset-irc-token'                 => 'Reset IRC key',
+    'reset-irc'                       => 'Reset IRC key',
     'reset-irc-help'                  => 'You will have to update any scripts or applications you are using with your new key, after resetting the IRC key',
     'reset-passkey'                   => 'Reset pass key (PID)',
     'reset-passkey-help'              => 'You will have to re-download all of your active torrents, after resetting the PID',

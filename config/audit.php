@@ -28,6 +28,7 @@ return [
         'deleted_at',
         'first_post_user_id',
         'ip',
+        'irckey',
         'last_action',
         'last_post_created_at',
         'last_post_id',

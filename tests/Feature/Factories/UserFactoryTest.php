@@ -24,6 +24,7 @@ test('user factory returns correct values when created', function (): void {
         'password',
         'passkey',
         'rsskey',
+        'irckey',
         'remember_token',
         'api_token',
     ]);
@@ -48,6 +49,7 @@ test('user factory returns correct values when created', function (): void {
             'invites',
             'hitandruns',
             'rsskey',
+            'irckey',
             'chatroom_id',
             'read_rules',
             'can_chat',

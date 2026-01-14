@@ -57,6 +57,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
  * @property int                             $invites
  * @property int                             $hitandruns
  * @property string                          $rsskey
+ * @property string                          $irckey
  * @property int                             $chatroom_id
  * @property int                             $read_rules
  * @property bool                            $can_chat
@@ -69,7 +70,6 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
  * @property bool                            $is_lifetime
  * @property string|null                     $remember_token
  * @property string|null                     $api_token
- * @property string|null                     $irckey
  * @property \Illuminate\Support\Carbon|null $last_login
  * @property \Illuminate\Support\Carbon|null $last_action
  * @property \Illuminate\Support\Carbon|null $disabled_at
@@ -102,9 +102,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'passkey',
         'rsskey',
+        'irckey',
         'remember_token',
         'api_token',
-        'irckey',
         'two_factor_secret',
         'two_factor_recovery_codes',
         'two_factor_confirmed_at',
@@ -971,16 +971,6 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * Get the apikeys for the user.
-     *
-     * @return HasMany<Apikey, $this>
-     */
-    public function apikeys(): HasMany
-    {
-        return $this->hasMany(Apikey::class);
-    }
-
-    /**
      * Get the irckeys for the user.
      *
      * @return HasMany<Irckey, $this>
@@ -988,6 +978,16 @@ class User extends Authenticatable implements MustVerifyEmail
     public function irckeys(): HasMany
     {
         return $this->hasMany(Irckey::class);
+    }
+
+    /**
+     * Get the apikeys for the user.
+     *
+     * @return HasMany<Apikey, $this>
+     */
+    public function apikeys(): HasMany
+    {
+        return $this->hasMany(Apikey::class);
     }
 
     /**

@@ -45,8 +45,8 @@ class IrckeyReset extends Notification implements ShouldQueue, SystemNotificatio
     public function toSystemNotification(User $notifiable): array
     {
         return [
-            'subject' => 'Your IRC key has been reset by staff',
-            'message' => "You will need to update your IRC key in all your IRC clients and applications to continue using IRC.\n\nFor more information, please create a helpdesk ticket.",
+            'subject' => 'ATTENTION - Your IRC key has been reset',
+            'message' => "Your IRC key has been reset by staff. You will need to update your IRC key in your IRC client to continue using IRC.\n\nFor more information, please create a helpdesk ticket.",
         ];
     }
 }

@@ -509,6 +509,17 @@
                         {{ __('user.rsskeys') }}
                     </a>
                 </p>
+                @if (config('other.irckeys.is-enabled'))
+                    <p class="form__group form__group--horizontal">
+                        <a
+                            class="form__button form__button--text"
+                            href="{{ route('staff.irckeys.index') }}"
+                        >
+                            <i class="{{ config('other.font-awesome') }} fa-key"></i>
+                            {{ __('user.irckeys') }}
+                        </a>
+                    </p>
+                @endif
                 <p class="form__group form__group--horizontal">
                     <a
                         class="form__button form__button--text"

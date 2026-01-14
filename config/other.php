@@ -283,4 +283,21 @@ return [
         */
         'max-buffer-to-buy-upload' => null,
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | IRC Keys
+    |--------------------------------------------------------------------------
+    | Allows users to generate a unique key for authentication with an irc bot.
+    */
+    'irckeys' => [
+        /*
+        |--------------------------------------------------------------------------
+        | Enable the IRC key system
+        |--------------------------------------------------------------------------
+        | True = Enabled
+        | False = Disabled (default)
+        */
+        'is-enabled' => false,
+    ],
 ];

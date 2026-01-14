@@ -25,12 +25,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int                             $id
  * @property int                             $user_id
  * @property string                          $content
- * @property string|null                     $created_at
+ * @property string                          $created_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  */
 class Irckey extends Model
 {
     /**
+     * Indicates if the model should be timestamped.
+     *
      * @var bool
      */
     public $timestamps = false;
@@ -55,7 +57,7 @@ class Irckey extends Model
     }
 
     /**
-     * Get the user that owns the apikey.
+     * Get the user that owns the irc key.
      *
      * @return BelongsTo<User, $this>
      */

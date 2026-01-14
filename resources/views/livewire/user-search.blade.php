@@ -80,6 +80,18 @@
                     </p>
                     <p class="form__group">
                         <input
+                            id="irckey"
+                            class="form__text"
+                            type="text"
+                            wire:model.live="irckey"
+                            placeholder=" "
+                        />
+                        <label class="form__label form__label--floating" for="irckey">
+                            {{ __('user.irckey') }}
+                        </label>
+                    </p>
+                    <p class="form__group">
+                        <input
                             id="passkey"
                             class="form__text"
                             type="text"

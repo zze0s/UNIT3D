@@ -512,6 +512,15 @@
                 <p class="form__group form__group--horizontal">
                     <a
                         class="form__button form__button--text"
+                        href="{{ route('staff.irckeys.index') }}"
+                    >
+                        <i class="{{ config('other.font-awesome') }} fa-key"></i>
+                        {{ __('user.irckeys') }}
+                    </a>
+                </p>
+                <p class="form__group form__group--horizontal">
+                    <a
+                        class="form__button form__button--text"
                         href="{{ route('staff.email_updates.index') }}"
                     >
                         <i class="{{ config('other.font-awesome') }} fa-key"></i>

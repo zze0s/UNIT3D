@@ -582,6 +582,12 @@ Route::middleware('language')->group(function (): void {
                 Route::patch('/', [App\Http\Controllers\User\RsskeyController::class, 'update'])->name('update');
             });
 
+            // Irckey
+            Route::prefix('irckeys')->name('irckeys.')->group(function (): void {
+                Route::get('/', [App\Http\Controllers\User\IrckeyController::class, 'index'])->name('index');
+                Route::patch('/', [App\Http\Controllers\User\IrckeyController::class, 'update'])->name('update');
+            });
+
             // Apikey
             Route::prefix('apikeys')->name('apikeys.')->group(function (): void {
                 Route::get('/', [App\Http\Controllers\User\ApikeyController::class, 'index'])->name('index');
@@ -1042,6 +1048,11 @@ Route::middleware('language')->group(function (): void {
             // RSS Keys
             Route::prefix('rsskeys')->name('rsskeys.')->group(function (): void {
                 Route::get('/', [App\Http\Controllers\Staff\RsskeyController::class, 'index'])->name('index');
+            });
+
+            // IRC Keys
+            Route::prefix('irckeys')->name('irckeys.')->group(function (): void {
+                Route::get('/', [App\Http\Controllers\Staff\IrckeyController::class, 'index'])->name('index');
             });
 
             // Ticket Categories

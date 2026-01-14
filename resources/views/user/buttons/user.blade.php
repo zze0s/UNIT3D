@@ -110,7 +110,7 @@
 @if ($isProfileOwner || $isModo)
     <li class="nav-tab-menu">
         <a
-            class="{{ Route::is('users.general_settings.edit', 'user_security', 'user_privacy', 'user_notification') ? 'nav-tab--active__link' : 'nav-tab__link' }}"
+            class="{{ Route::is('users.general_settings.edit', 'users.email.edit', 'users.password.edit', 'users.passkeys.index', 'users.rsskeys.index', 'users.irckeys.index', 'users.apikeys.index', 'users.two_factor_auth.edit', 'users.privacy_settings.edit', 'users.notification_settings.edit') ? 'nav-tab--active__link' : 'nav-tab__link' }}"
             href="{{ route('users.general_settings.edit', ['user' => $user]) }}"
         >
             {{ __('user.settings') }}
@@ -161,20 +161,20 @@
                     {{ __('user.rsskey') }}
                 </a>
             </li>
-            <li class="{{ Route::is('users.apikeys.index') ? 'nav-tab--active' : 'nav-tavV2' }}">
-                <a
-                    class="{{ Route::is('users.apikeys.index') ? 'nav-tab--active__link' : 'nav-tab__link' }}"
-                    href="{{ route('users.apikeys.index', ['user' => $user]) }}"
-                >
-                    {{ __('user.apikey') }}
-                </a>
-            </li>
             <li class="{{ Route::is('users.irckeys.index') ? 'nav-tab--active' : 'nav-tavV2' }}">
                 <a
                     class="{{ Route::is('users.irckeys.index') ? 'nav-tab--active__link' : 'nav-tab__link' }}"
                     href="{{ route('users.irckeys.index', ['user' => $user]) }}"
                 >
                     {{ __('user.irckey') }}
+                </a>
+            </li>
+            <li class="{{ Route::is('users.apikeys.index') ? 'nav-tab--active' : 'nav-tavV2' }}">
+                <a
+                    class="{{ Route::is('users.apikeys.index') ? 'nav-tab--active__link' : 'nav-tab__link' }}"
+                    href="{{ route('users.apikeys.index', ['user' => $user]) }}"
+                >
+                    {{ __('user.apikey') }}
                 </a>
             </li>
             <li

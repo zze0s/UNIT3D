@@ -41,6 +41,7 @@ return [
         'read',
         'remember_token',
         'rsskey',
+        'irckey',
         'updated_at',
         'views',
     ],

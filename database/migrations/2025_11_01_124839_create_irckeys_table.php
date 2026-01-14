@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * NOTICE OF LICENSE.
  *
@@ -13,6 +16,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class () extends Migration {
@@ -21,14 +25,34 @@ return new class () extends Migration {
      */
     public function up(): void
     {
+        Schema::table('users', function (Blueprint $table): void {
+            $table->string('irckey')->after('rsskey');
+        });
+
         Schema::create('irckeys', function (Blueprint $table): void {
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->string('content');
-            $table->timestamp('created_at')->nullable()->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
             $table->timestamp('deleted_at')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnUpdate();
         });
+
+        DB::table('users')
+            ->lazyById()
+            ->each(function ($user): void {
+                $irckey = md5(random_bytes(60).$user->password);
+
+                DB::table('users')
+                    ->where('id', $user->id)
+                    ->update(['irckey' => $irckey]);
+
+                DB::table('irckeys')->insert([
+                    'user_id'    => $user->id,
+                    'content'    => $irckey,
+                    'created_at' => now(),
+                ]);
+            });
     }
 };

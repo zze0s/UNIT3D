@@ -92,7 +92,7 @@
 
 @section('sidebar')
     <section class="panelV2">
-        <h2 class="panel__heading">{{ __('user.reset-irc-token') }}</h2>
+        <h2 class="panel__heading">{{ __('user.reset-irc') }}</h2>
         <div class="panel__body">
             <form
                 class="form"
@@ -102,20 +102,11 @@
                 @csrf
                 @method('PATCH')
                 <p>{{ __('user.reset-irc-help') }}.</p>
-                @if ($user->irckey === null)
-                    <p>You currently do not have an IRC key.</p>
-                    <p class="form__group--horizontal">
-                        <button class="form__button form__button--filled form__button--centered">
-                            Generate IRC key
-                        </button>
-                    </p>
-                @else
-                    <p class="form__group--horizontal">
-                        <button class="form__button form__button--filled form__button--centered">
-                            Reset
-                        </button>
-                    </p>
-                @endif
+                <p class="form__group--horizontal">
+                    <button class="form__button form__button--filled form__button--centered">
+                        Reset
+                    </button>
+                </p>
             </form>
         </div>
     </section>
